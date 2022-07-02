@@ -43,14 +43,6 @@ public class EmailController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    // @GetMapping
-    // public ResponseEntity<Page<Pedido>> findAllPedidos(
-    //     @RequestParam(value = "status", required = false) StatusPedido status, 
-    //     @RequestParam(value = "nome", required = false) String nome, 
-    //     Pageable pageable) {
-    //     return ResponseEntity.ok(pedidoService.findAllPedidosCaixaPaginada(status, nome, pageable));
-    // }
-
     @GetMapping("/emails")
     public ResponseEntity<Page<Email>> getAllEmails(@PageableDefault(page = 0, size = 5, sort = "emailId", direction = Sort.Direction.DESC) Pageable pageable){
         return new ResponseEntity<>(emailService.findAll(pageable), HttpStatus.OK);
